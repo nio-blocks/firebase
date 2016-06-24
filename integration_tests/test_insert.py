@@ -1,9 +1,10 @@
-from . import MY_APPLICATION
+from . import MY_APPLICATION, MY_AUTH
 from ..firebase_insert_block import FirebaseInsert
 from unittest import skipUnless
 from nio import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
 from nio.block.terminals import Terminal, TerminalType
+
 
 @skipUnless(MY_APPLICATION, "No application details provided")
 class TestFirebaseInsert(NIOBlockTestCase):
@@ -12,6 +13,7 @@ class TestFirebaseInsert(NIOBlockTestCase):
         blk = FirebaseInsert()
         self.configure_block(blk, {
             "application": MY_APPLICATION,
+            "auth": MY_AUTH,
             "collection": "integration_tests/blah",
             "enrich": {
                 "exclude_existing": False,

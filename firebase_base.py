@@ -1,16 +1,13 @@
 from firebase import firebase
 from nio import Block
 from nio.block.mixins import EnrichSignals
-from nio.properties import PropertyHolder, ObjectProperty, StringProperty
-
-
-class FirebaseAuth(PropertyHolder):
-    pass
+from nio.properties import ObjectProperty, StringProperty
+from .auth.property import FirebaseAuthProperty
 
 
 class FirebaseBase(EnrichSignals, Block):
 
-    auth = ObjectProperty(FirebaseAuth, title="Authentication")
+    auth = ObjectProperty(FirebaseAuthProperty, title="Authentication")
     application = StringProperty(title="Firebase Application")
     collection = StringProperty(title="Firebase Collection", default="/")
 
@@ -25,7 +22,7 @@ class FirebaseBase(EnrichSignals, Block):
     def _create_firebase(self):
         return firebase.FirebaseApplication(
             self.application(),
-            authentication=None)
+            authentication=self.auth().get_auth_object())
 
     def _get_collection(self, signal=None):
         collection = self.collection(signal)

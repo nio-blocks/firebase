@@ -13,6 +13,7 @@ class FirebaseInsert(FirebaseBase):
                 res = self._firebase.post(collection, sig.to_dict())
             except:
                 self.logger.exception("Couldn't save signal")
+                continue
             # Take the result of the save and enrich our incoming signal
             # with the data
             out_sigs.append(self.get_output_signal(res, sig))
