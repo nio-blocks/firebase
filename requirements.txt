@@ -1,1 +1,2 @@
 python-firebase
+firebase-token-generator
