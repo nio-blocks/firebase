@@ -25,7 +25,7 @@ The result of the save. See the following example:
 { 'sim': 0 }
 ```
 
-#### Service Config
+#### Block Config
 ```
 "application": "https://nio-test.firebaseio.com/",
 "auth": {
