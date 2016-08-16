@@ -1,6 +1,6 @@
 # Firebase
 The Firebase Insert block takes incoming signals and saves them to the Firebase database under the specified `collection`. 
-If no `collection` is specified, each signal will be saved in the database under a different key. 
+If no `collection` is specified, each signal will be saved in the database under a uniquely generated key. 
 
 ## Properties
 * **Credentials**: Firebase user id and app secret
