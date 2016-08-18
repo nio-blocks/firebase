@@ -3,9 +3,9 @@ The Firebase Insert block takes incoming signals and saves them to the Firebase 
 If no `collection` is specified, each signal will be saved in the database under a uniquely generated key. 
 
 ## Properties
-* **Credentials**: Firebase user id and app secret
-* **Application**: Firebase url
-* **Collection**: Object key for accessing elements in the database tree
+* **credentials**: Firebase user id and app secret
+* **application**: Firebase url
+* **collection**: Object key for accessing elements in the database tree
 
 ## Dependencies
 * [python-firebase](https://pypi.python.org/pypi/python-firebase/1.2)
