@@ -8,7 +8,8 @@ from .auth.property import FirebaseAuthProperty
 class FirebaseBase(EnrichSignals, Block):
 
     auth = ObjectProperty(FirebaseAuthProperty, title="Authentication")
-    application = StringProperty(title="Firebase Application")
+    application = StringProperty(title="Firebase Application",
+                                 default='[[FIREBASE_APPLICATION]]')
     collection = StringProperty(title="Firebase Collection", default="/")
 
     def __init__(self):
