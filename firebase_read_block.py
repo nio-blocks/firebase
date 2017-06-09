@@ -12,7 +12,7 @@ class FirebaseRead(FirebaseBase):
             try:
                 res = self._firebase.get(collection, None)
             except:
-                self.logger.exception("Couldn't save signal")
+                self.logger.exception("Couldn't get from collection")
                 continue
             # Take the result of the save and enrich our incoming signal
             # with the data
