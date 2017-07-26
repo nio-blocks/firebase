@@ -1,5 +1,5 @@
 {
-    "nio/Firebase": {
+    "nio/FirebaseInsert": {
         "Input": {
             "Description": "Any list of signals."
         },
@@ -27,5 +27,26 @@
         "Output": {
             "Description": "The result of the insert. See the following example:"
         }
+    },
+    "nio/FirebaseRead": {
+        "Input": {
+            "Description": "Any list of signals."
+        },
+        "Properties": {
+            "credentials": {
+                "description": "Firebase user id and app secret"
+            },
+            "application": {
+                "description": "Firebase url"
+            },
+            "collection": {
+                "description": "Object key for accessing elements in the database tree"
+            }
+        },
+        "Commands": {},
+        "Description": "Firebase Read block",
+        "Version": "1.0.0",
+        "Category": "Database",
+        "Output": {}
     }
 }
