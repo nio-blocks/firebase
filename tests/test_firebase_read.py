@@ -1,8 +1,10 @@
-from ..firebase_read_block import FirebaseRead
 from unittest.mock import patch
+
 from nio import Signal
 from nio.block.terminals import Terminal, TerminalType
 from nio.testing.block_test_case import NIOBlockTestCase
+
+from ..firebase_read_block import FirebaseRead
 
 
 class TestFirebaseRead(NIOBlockTestCase):
@@ -18,7 +20,8 @@ class TestFirebaseRead(NIOBlockTestCase):
                     "enrich_field": "output"
                 }
             })
-            # Firebase should return with a value id and the value it is associated with
+            # Firebase should return with a value id and the value it is
+            # associated with
             blk._firebase.get.return_value = {"fake id": "fake value"}
 
             blk.start()
@@ -39,6 +42,7 @@ class TestFirebaseRead(NIOBlockTestCase):
             out_sig = sigs_notified[0]
             # Make sure the details of our input signal were notified
             self.assertEqual(out_sig.test_key, "test_val")
-            # Make sure the fake value was returned with the fake id from the get request
+            # Make sure the fake value was returned with the fake id from the
+            # get request
             self.assertEqual(out_sig.output["fake id"], "fake value")
             blk.stop()

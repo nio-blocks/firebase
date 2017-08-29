@@ -1,12 +1,12 @@
 {
   "nio/FirebaseInsert": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/firebase.git"
+    "url": "git://github.com/nio-blocks/firebase.git",
+    "version": "1.0.0"
   },
   "nio/FirebaseRead": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/firebase.git"
+    "url": "git://github.com/nio-blocks/firebase.git",
+    "version": "1.0.0"
   }
 }

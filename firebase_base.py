@@ -1,10 +1,14 @@
 from firebase import firebase
+
 from nio import Block
 from nio.block.mixins import EnrichSignals
 from nio.properties import ObjectProperty, StringProperty
+from nio.util.discovery import not_discoverable
+
 from .auth.property import FirebaseAuthProperty
 
 
+@not_discoverable
 class FirebaseBase(EnrichSignals, Block):
 
     auth = ObjectProperty(FirebaseAuthProperty, title="Authentication")
