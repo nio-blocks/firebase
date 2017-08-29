@@ -1,9 +1,11 @@
-from . import MY_APPLICATION, MY_AUTH
-from ..firebase_insert_block import FirebaseInsert
 from unittest import skipUnless
+
 from nio import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
 from nio.block.terminals import Terminal, TerminalType
+
+from . import MY_APPLICATION, MY_AUTH
+from ..firebase_insert_block import FirebaseInsert
 
 
 @skipUnless(MY_APPLICATION, "No application details provided")

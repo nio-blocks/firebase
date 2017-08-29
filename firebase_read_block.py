@@ -1,7 +1,13 @@
+from nio.util.discovery import discoverable
+from nio.properties import VersionProperty
+
 from .firebase_base import FirebaseBase
 
 
+@discoverable
 class FirebaseRead(FirebaseBase):
+
+    version = VersionProperty("1.0.0")
 
     def process_signals(self, signals):
         out_sigs = []

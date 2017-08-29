@@ -1,6 +1,8 @@
-from ..firebase_base import FirebaseBase
 from unittest.mock import patch
+
 from nio.testing.block_test_case import NIOBlockTestCase
+
+from ..firebase_base import FirebaseBase
 
 
 class TestFirebaseBase(NIOBlockTestCase):
