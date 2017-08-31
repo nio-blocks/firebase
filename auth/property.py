@@ -9,8 +9,9 @@ class FirebaseAuthProperty(PropertyHolder):
     can be passed to the firebase SDK to perform authentication.
     """
 
-    app_secret = StringProperty(title="Firebase App Secret", allow_none=True)
-    user_id = StringProperty(title="User ID", allow_none=True)
+    apiKey = StringProperty(title='API Key')
+    databaseURL = StringProperty(title='Database URL')
+    projectId = StringProperty(title='Firebase Project ID')
 
     def get_auth_object(self):
         """ Return an Authenticator that can be passed to the firebase SDK
@@ -20,9 +21,16 @@ class FirebaseAuthProperty(PropertyHolder):
             None otherwise. Note that None is a valid argument to the firebase
             SDK's authenticator argument, it just won't use authentication.
         """
-        secret = self.app_secret()
-        uid = self.user_id()
-        if secret and uid:
-            return FirebaseAuthenticator(secret, uid)
+        apiKey = self.apiKey()
+        databaseURL = self.databaseURL()
+        projectId = self.projectId()
+        if apiKey and databaseURL and projectId:
+            config = {
+                "apiKey": apiKey,
+                "authDomain": "{}.firebaseapp.com".format(projectId),
+                "databaseURL": databaseURL,
+                "storageBucket": "{}.appspot.com".format(projectId)
+            }
+            return config
         else:
             return None

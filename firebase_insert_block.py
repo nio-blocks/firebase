@@ -7,7 +7,7 @@ from .firebase_base import FirebaseBase
 @discoverable
 class FirebaseInsert(FirebaseBase):
 
-    version = VersionProperty("1.0.0")
+    version = VersionProperty("2.0.0")
 
     def process_signals(self, signals):
         out_sigs = []
@@ -16,7 +16,7 @@ class FirebaseInsert(FirebaseBase):
             # so we need to compute it inside the loop
             collection = self._get_collection(sig)
             try:
-                res = self._firebase.post(collection, sig.to_dict())
+                res = self.db.child(collection).push(sig.to_dict(), self.user['idToken'])
             except:
                 self.logger.exception("Couldn't save signal")
                 continue
