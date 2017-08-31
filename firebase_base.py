@@ -25,7 +25,7 @@ class FirebaseBase(EnrichSignals, Block):
         self._firebase = self._create_firebase()
 
     def _create_firebase(self):
-        firebase = pytrebase.initialize_app(self.config().get_auth_object())
+        firebase = pyrebase.initialize_app(self.config().get_auth_object())
         auth = firebase.auth()
         self.user = auth.sign_in_with_email_and_password(self.userEmail(), self.userPassword())
         self.db = firebase.database()

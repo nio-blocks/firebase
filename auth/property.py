@@ -1,4 +1,3 @@
-from .authenticator import FirebaseAuthenticator
 from nio.properties import PropertyHolder, StringProperty
 
 
