@@ -18,6 +18,7 @@ class FirebaseBase(EnrichSignals, Block):
 
     def __init__(self):
         super().__init__()
+        self.stream = None
         self._firebase = None
 
     def configure(self, context):
