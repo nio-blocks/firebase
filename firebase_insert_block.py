@@ -5,7 +5,7 @@ from .firebase_base import FirebaseBase
 
 class FirebaseInsert(FirebaseBase):
 
-    version = VersionProperty("1.0.0")
+    version = VersionProperty("2.0.0")
 
     def process_signals(self, signals):
         out_sigs = []
