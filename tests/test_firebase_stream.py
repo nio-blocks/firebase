@@ -1,15 +1,14 @@
 from unittest.mock import patch
 
-from nio import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
 
-from ..firebase_read_block import FirebaseRead
+from ..firebase_stream_block import FirebaseStream
 
 
-class TestFirebaseRead(NIOBlockTestCase):
+class TestFirebaseStream(NIOBlockTestCase):
 
     def test_read(self):
-        blk = FirebaseRead()
+        blk = FirebaseStream()
         fbase_imp = self.get_absolute_import('firebase_base.pyrebase')
         with patch(fbase_imp) as mock_fbase:
             self.configure_block(blk, {
@@ -25,27 +24,26 @@ class TestFirebaseRead(NIOBlockTestCase):
                     "exclude_existing": False
                 }
             })
-            # We will simulate the post returning a name with a fake ID
+            # We will simulate the post returning a message with fake data
             mock_fbase.initialize_app.return_value.database.return_value.\
-                child.return_value.get.return_value.\
-                val.return_value = {"fake_id": "fake_value"}
+                child.return_value.stream.return_value = {
+                                                "event": "fake_event",
+                                                "path": "fake_path",
+                                                "data": "fake_data"
+                                                }
 
             blk.start()
 
-            blk.process_signals([Signal({
-                "test_key": "test_val"
-            })])
-
-            # We should get an output signal from the insert
-            self.assert_num_signals_notified(1)
+            # Send mocked return message to the stream handler
+            blk.stream_handler(mock_fbase.initialize_app.return_value.
+                               database.return_value.child.
+                               return_value.stream.return_value)
 
             out_sig = self.last_notified["__default_terminal_value"][0]
-            # Make sure the details of our input signal were notified
-            self.assertEqual(out_sig.test_key, "test_val")
-            # Make sure the ID/name of the saved signal was included on the
-            # output signal under the "name" field
-            self.assertEqual(out_sig.fake_id, "fake_value")
-            blk.stop()
+
+            self.assertEqual(out_sig.event, "fake_event")
+            self.assertEqual(out_sig.path, "fake_path")
+            self.assertEqual(out_sig.data, "fake_data")
 
     def get_absolute_import(self, import_loc):
         """ Get an absolute import from one relative to the block root """

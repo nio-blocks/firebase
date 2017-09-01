@@ -1,4 +1,4 @@
-from firebase import firebase
+import pyrebase
 
 from nio import Block
 from nio.block.mixins import EnrichSignals
@@ -11,23 +11,27 @@ from .auth.property import FirebaseAuthProperty
 @not_discoverable
 class FirebaseBase(EnrichSignals, Block):
 
-    auth = ObjectProperty(FirebaseAuthProperty, title="Authentication")
-    application = StringProperty(title="Firebase Application",
-                                 default='[[FIREBASE_APPLICATION]]')
-    collection = StringProperty(title="Firebase Collection", default="/")
+    config = ObjectProperty(FirebaseAuthProperty, title="Authentication")
+    collection = StringProperty(title='Database Collection')
+    userEmail = StringProperty(title='Authenticated User Email')
+    userPassword = StringProperty(title='Authenticated User Password')
 
     def __init__(self):
         super().__init__()
-        self._firebase = None
+        self.stream = None
+        self.user = None
+        self.db = None
 
     def configure(self, context):
         super().configure(context)
-        self._firebase = self._create_firebase()
+        self._create_firebase()
 
     def _create_firebase(self):
-        return firebase.FirebaseApplication(
-            self.application(),
-            authentication=self.auth().get_auth_object())
+        firebase = pyrebase.initialize_app(self.config().get_auth_object())
+        auth = firebase.auth()
+        self.user = auth.sign_in_with_email_and_password(self.userEmail(),
+                                                         self.userPassword())
+        self.db = firebase.database()
 
     def _get_collection(self, signal=None):
         collection = self.collection(signal)

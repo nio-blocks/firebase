@@ -8,5 +8,10 @@
     "language": "Python",
     "url": "git://github.com/nio-blocks/firebase.git",
     "version": "1.0.0"
+  },
+  "nio/FirebaseStream": {
+    "language": "Python",
+    "url": "git://github.com/nio-blocks/firebase.git",
+    "version": "1.0.0"
   }
 }
