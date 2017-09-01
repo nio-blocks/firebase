@@ -19,11 +19,12 @@ class FirebaseBase(EnrichSignals, Block):
     def __init__(self):
         super().__init__()
         self.stream = None
-        self._firebase = None
+        self.user = None
+        self.db = None
 
     def configure(self, context):
         super().configure(context)
-        self._firebase = self._create_firebase()
+        self._create_firebase()
 
     def _create_firebase(self):
         firebase = pyrebase.initialize_app(self.config().get_auth_object())

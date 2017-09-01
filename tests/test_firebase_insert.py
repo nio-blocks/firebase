@@ -11,17 +11,25 @@ class TestFirebaseInsert(NIOBlockTestCase):
 
     def test_insert(self):
         blk = FirebaseInsert()
-        with patch.object(blk, '_create_firebase'):
+        fbase_imp = self.get_absolute_import('firebase_base.pyrebase')
+        with patch(fbase_imp) as mock_fbase:
             self.configure_block(blk, {
-                "application": "test",
-                "collection": "my_collection",
+                "collection": "COLLECTION",
+                "userEmail": "USER_EMAIL",
+                "userPassword": "USER_PASSWORD",
+                "config": {
+                    "apiKey": "API_KEY",
+                    "databaseURL": "DATABASE_URL",
+                    "projectId": "PROJECT_ID"
+                },
                 "enrich": {
-                    "exclude_existing": False,
-                    "enrich_field": "output"
+                    "exclude_existing": False
                 }
             })
             # We will simulate the post returning a name with a fake ID
-            blk._firebase.post.return_value = {"name": "fake id"}
+            mock_fbase.initialize_app.return_value.database.return_value.child.\
+            return_value.push.return_value = {"name": "fake id"}
+
 
             blk.start()
             blk.process_signals([Signal({
@@ -31,15 +39,15 @@ class TestFirebaseInsert(NIOBlockTestCase):
             # We should get an output signal from the insert
             self.assert_num_signals_notified(1)
 
-            # TODO: Move this to the framework block unit test
-            sigs_notified = self.last_notified[
-                Terminal.get_default_terminal_on_class(
-                    FirebaseInsert, TerminalType.input).id]
-
-            out_sig = sigs_notified[0]
+            out_sig = self.last_notified["__default_terminal_value"][0]
             # Make sure the details of our input signal were notified
             self.assertEqual(out_sig.test_key, "test_val")
             # Make sure the ID/name of the saved signal was included on the
             # output signal under the "name" field
-            self.assertEqual(out_sig.output["name"], "fake id")
+            self.assertEqual(out_sig.name, "fake id")
             blk.stop()
+
+    def get_absolute_import(self, import_loc):
+        """ Get an absolute import from one relative to the block root """
+        block_root = '.'.join(__name__.split('.')[:-2])
+        return "{}.{}".format(block_root, import_loc)
