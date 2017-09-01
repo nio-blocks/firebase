@@ -1,7 +1,5 @@
 from unittest.mock import patch
 
-from nio import Signal
-from nio.block.terminals import Terminal, TerminalType
 from nio.testing.block_test_case import NIOBlockTestCase
 
 from ..firebase_stream_block import FirebaseStream

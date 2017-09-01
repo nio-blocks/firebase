@@ -1,14 +1,12 @@
-from nio.util.discovery import discoverable
 from nio.properties import VersionProperty
 from nio.signal.base import Signal
 
 from .firebase_base import FirebaseBase
 
 
-@discoverable
 class FirebaseStream(FirebaseBase):
 
-    version = VersionProperty("2.0.0")
+    version = VersionProperty("1.0.0")
 
     def start(self):
         self.stream = self.db.child(self.collection()).\

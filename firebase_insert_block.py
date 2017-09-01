@@ -1,13 +1,11 @@
 from nio.properties import VersionProperty
-from nio.util.discovery import discoverable
 
 from .firebase_base import FirebaseBase
 
 
-@discoverable
 class FirebaseInsert(FirebaseBase):
 
-    version = VersionProperty("2.0.0")
+    version = VersionProperty("1.0.0")
 
     def process_signals(self, signals):
         out_sigs = []

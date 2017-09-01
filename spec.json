@@ -1,6 +1,6 @@
 {
   "nio/FirebaseInsert": {
-    "version": "2.0.0",
+    "version": "1.0.0",
     "description": "The Firebase Insert block takes incoming signals and saves them to the Firebase database under the specified `collection`. If no `collection` is specified, each signal will be saved in the database under a uniquely generated key.",
     "properties": {
       "collection": {
@@ -54,7 +54,7 @@
     "commands": {}
   },
   "nio/FirebaseRead": {
-    "version": "2.0.0",
+    "version": "1.0.0",
     "description": "The Firebase Read block takes incoming signals and uses them to read from the Firebase database under the specified `collection`.",
     "properties": {
       "collection": {
@@ -108,7 +108,7 @@
     "commands": {}
   },
   "nio/FirebaseStream": {
-    "version": "2.0.0",
+    "version": "1.0.0",
     "description": "The Firebase Stream block listens for changes to the specified `collection` and outputs all changes as a signal",
     "properties": {
       "collection": {
@@ -151,12 +151,12 @@
     },
     "inputs": {
       "default": {
-        "description": ""
+        "description": "None."
       }
     },
     "outputs": {
       "default": {
-        "description": ""
+        "description": "Results of new database changes."
       }
     },
     "commands": {}
