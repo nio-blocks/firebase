@@ -14,7 +14,6 @@ class FirebaseRead(FirebaseBase):
         for sig in signals:
             collection = self._get_collection(sig)
             try:
-                #res = self._firebase.get(collection, None)
                 res = self.db.child(collection).get(self.user['idToken']).val()
             except:
                 self.logger.exception("Couldn't get from collection")

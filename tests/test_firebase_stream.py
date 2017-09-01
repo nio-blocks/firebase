@@ -27,8 +27,8 @@ class TestFirebaseStream(NIOBlockTestCase):
                 }
             })
             # We will simulate the post returning a message with fake data
-            mock_fbase.initialize_app.return_value.database.return_value.child.\
-            return_value.stream.return_value = {
+            mock_fbase.initialize_app.return_value.database.return_value.\
+                child.return_value.stream.return_value = {
                                                 "event": "fake_event",
                                                 "path": "fake_path",
                                                 "data": "fake_data"
@@ -37,15 +37,15 @@ class TestFirebaseStream(NIOBlockTestCase):
             blk.start()
 
             # Send mocked return message to the stream handler
-            blk.stream_handler(mock_fbase.initialize_app.return_value.database.return_value.child.\
-            return_value.stream.return_value)
+            blk.stream_handler(mock_fbase.initialize_app.return_value.
+                               database.return_value.child.
+                               return_value.stream.return_value)
 
             out_sig = self.last_notified["__default_terminal_value"][0]
 
             self.assertEqual(out_sig.event, "fake_event")
             self.assertEqual(out_sig.path, "fake_path")
             self.assertEqual(out_sig.data, "fake_data")
-
 
     def get_absolute_import(self, import_loc):
         """ Get an absolute import from one relative to the block root """

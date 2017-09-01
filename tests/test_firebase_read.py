@@ -27,8 +27,9 @@ class TestFirebaseRead(NIOBlockTestCase):
                 }
             })
             # We will simulate the post returning a name with a fake ID
-            mock_fbase.initialize_app.return_value.database.return_value.child.\
-            return_value.get.return_value.val.return_value = {"fake_id": "fake_value"}
+            mock_fbase.initialize_app.return_value.database.return_value.\
+                child.return_value.get.return_value.\
+                val.return_value = {"fake_id": "fake_value"}
 
             blk.start()
 

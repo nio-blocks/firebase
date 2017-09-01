@@ -16,7 +16,8 @@ class FirebaseInsert(FirebaseBase):
             # so we need to compute it inside the loop
             collection = self._get_collection(sig)
             try:
-                res = self.db.child(collection).push(sig.to_dict(), self.user['idToken'])
+                res = self.db.child(collection).push(sig.to_dict(),
+                                                     self.user['idToken'])
             except:
                 self.logger.exception("Couldn't save signal")
                 continue

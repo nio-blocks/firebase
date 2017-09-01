@@ -29,7 +29,8 @@ class FirebaseBase(EnrichSignals, Block):
     def _create_firebase(self):
         firebase = pyrebase.initialize_app(self.config().get_auth_object())
         auth = firebase.auth()
-        self.user = auth.sign_in_with_email_and_password(self.userEmail(), self.userPassword())
+        self.user = auth.sign_in_with_email_and_password(self.userEmail(),
+                                                         self.userPassword())
         self.db = firebase.database()
 
     def _get_collection(self, signal=None):
