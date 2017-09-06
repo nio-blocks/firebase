@@ -11,9 +11,12 @@ from .auth.property import FirebaseAuthProperty
 class FirebaseBase(Block):
 
     config = ObjectProperty(FirebaseAuthProperty, title="Authentication")
-    collection = StringProperty(title='Database Collection', default='[[FIREBASE_COLLECTION]]')
-    userEmail = StringProperty(title='Authenticated User Email', default='[[USER_EMAIL]]')
-    userPassword = StringProperty(title='Authenticated User Password', default='[[USER_PASSWORD]]')
+    collection = StringProperty(title='Database Collection',
+                                default='[[FIREBASE_COLLECTION]]')
+    userEmail = StringProperty(title='Authenticated User Email',
+                               default='[[USER_EMAIL]]')
+    userPassword = StringProperty(title='Authenticated User Password',
+                                  default='[[USER_PASSWORD]]')
 
     def __init__(self):
         super().__init__()

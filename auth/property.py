@@ -8,9 +8,12 @@ class FirebaseAuthProperty(PropertyHolder):
     can be passed to the firebase SDK to perform authentication.
     """
 
-    apiKey = StringProperty(title='API Key', default='[[FIREBASE_API_KEY]]')
-    databaseURL = StringProperty(title='Database URL', default='[[FIREBASE_DATABASE_URL]]')
-    projectId = StringProperty(title='Firebase Project ID', default='[[FIREBASE_PROJECT_ID]]')
+    apiKey = StringProperty(title='API Key',
+                            default='[[FIREBASE_API_KEY]]')
+    databaseURL = StringProperty(title='Database URL',
+                                 default='[[FIREBASE_DATABASE_URL]]')
+    projectId = StringProperty(title='Firebase Project ID',
+                               default='[[FIREBASE_PROJECT_ID]]')
 
     def get_auth_object(self):
         """ Return an Authenticator that can be passed to the firebase SDK
