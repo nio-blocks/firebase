@@ -7,7 +7,7 @@
   "nio/FirebaseRead": {
     "language": "Python",
     "url": "git://github.com/nio-blocks/firebase.git",
-    "version": "2.0.0"
+    "version": "2.0.1"
   },
   "nio/FirebaseStream": {
     "language": "Python",
