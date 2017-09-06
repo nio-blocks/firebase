@@ -2,24 +2,21 @@
   "nio/FirebaseInsert": {
     "version": "2.0.0",
     "description": "The Firebase Insert block takes incoming signals and saves them to the Firebase database under the specified `collection`. If no `collection` is specified, each signal will be saved in the database under a uniquely generated key.",
-    "categories": [
-      "Database"
-    ],
     "properties": {
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
         "description": "Object key for accessing elements in the database tree",
-        "default": null
+        "default": "[[FIREBASE_COLLECTION]]"
       },
       "config": {
         "title": "Authentication",
         "type": "ObjectType",
         "description": "Object containing authentication data",
         "default": {
-          "databaseURL": null,
-          "projectId": null,
-          "apiKey": null
+          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
+          "apiKey": "[[FIREBASE_API_KEY]]",
+          "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
       "enrich": {
@@ -27,21 +24,21 @@
         "type": "ObjectType",
         "description": "Options for enriching signals.",
         "default": {
-          "enrich_field": "",
-          "exclude_existing": true
+          "exclude_existing": true,
+          "enrich_field": ""
         }
       },
       "userEmail": {
         "title": "Authenticated User Email",
         "type": "StringType",
         "description": "Authenticated user email set up in Firebase",
-        "default": null
+        "default": "[[USER_EMAIL]]"
       },
       "userPassword": {
         "title": "Authenticated User Password",
         "type": "StringType",
         "description": "Authenticated user password set up in Firebase",
-        "default": null
+        "default": "[[USER_PASSWORD]]"
       }
     },
     "inputs": {
@@ -59,24 +56,21 @@
   "nio/FirebaseRead": {
     "version": "2.0.0",
     "description": "The Firebase Read block takes incoming signals and uses them to read from the Firebase database under the specified `collection`.",
-    "categories": [
-      "Database"
-    ],
     "properties": {
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
         "description": "Object key for accessing elements in the database tree",
-        "default": null
+        "default": "[[FIREBASE_COLLECTION]]"
       },
       "config": {
         "title": "Authentication",
         "type": "ObjectType",
         "description": "Object containing authentication data",
         "default": {
-          "databaseURL": null,
-          "projectId": null,
-          "apiKey": null
+          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
+          "apiKey": "[[FIREBASE_API_KEY]]",
+          "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
       "enrich": {
@@ -84,21 +78,21 @@
         "type": "ObjectType",
         "description": "Options for enriching signals.",
         "default": {
-          "enrich_field": "",
-          "exclude_existing": true
+          "exclude_existing": true,
+          "enrich_field": ""
         }
       },
       "userEmail": {
         "title": "Authenticated User Email",
         "type": "StringType",
         "description": "Authenticated user email set up in Firebase",
-        "default": null
+        "default": "[[USER_EMAIL]]"
       },
       "userPassword": {
         "title": "Authenticated User Password",
         "type": "StringType",
         "description": "Authenticated user password set up in Firebase",
-        "default": null
+        "default": "[[USER_PASSWORD]]"
       }
     },
     "inputs": {
@@ -116,46 +110,34 @@
   "nio/FirebaseStream": {
     "version": "1.0.0",
     "description": "The Firebase Stream block listens for changes to the specified `collection` and outputs all changes as a signal",
-    "categories": [
-      "Database"
-    ],
     "properties": {
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
         "description": "Object key for accessing elements in the database tree",
-        "default": null
+        "default": "[[FIREBASE_COLLECTION]]"
       },
       "config": {
         "title": "Authentication",
         "type": "ObjectType",
         "description": "Object containing authentication data",
         "default": {
-          "databaseURL": null,
-          "projectId": null,
-          "apiKey": null
-        }
-      },
-      "enrich": {
-        "title": "Signal Enrichment",
-        "type": "ObjectType",
-        "description": "Options for enriching signals.",
-        "default": {
-          "enrich_field": "",
-          "exclude_existing": true
+          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
+          "apiKey": "[[FIREBASE_API_KEY]]",
+          "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
       "userEmail": {
         "title": "Authenticated User Email",
         "type": "StringType",
         "description": "Authenticated user email set up in Firebase",
-        "default": null
+        "default": "[[USER_EMAIL]]"
       },
       "userPassword": {
         "title": "Authenticated User Password",
         "type": "StringType",
         "description": "Authenticated user password set up in Firebase",
-        "default": null
+        "default": "[[USER_PASSWORD]]"
       }
     },
     "inputs": {
