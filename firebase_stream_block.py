@@ -6,7 +6,7 @@ from .firebase_base import FirebaseBase
 
 class FirebaseStream(FirebaseBase):
 
-    version = VersionProperty("1.0.0")
+    version = VersionProperty("1.0.1")
 
     def start(self):
         self.stream = self.db.child(self.collection()).\
