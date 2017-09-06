@@ -17,8 +17,8 @@
         "type": "ObjectType",
         "description": "Object containing authentication data",
         "default": {
-          "apiKey": "[[FIREBASE_API_KEY]]",
           "databaseURL": "[[FIREBASE_DATABASE_URL]]",
+          "apiKey": "[[FIREBASE_API_KEY]]",
           "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
@@ -74,8 +74,8 @@
         "type": "ObjectType",
         "description": "Object containing authentication data",
         "default": {
-          "apiKey": "[[FIREBASE_API_KEY]]",
           "databaseURL": "[[FIREBASE_DATABASE_URL]]",
+          "apiKey": "[[FIREBASE_API_KEY]]",
           "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },

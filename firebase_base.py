@@ -1,7 +1,6 @@
 import pyrebase
 
 from nio import Block
-from nio.block.mixins import EnrichSignals
 from nio.properties import ObjectProperty, StringProperty
 from nio.util.discovery import not_discoverable
 
@@ -9,12 +8,15 @@ from .auth.property import FirebaseAuthProperty
 
 
 @not_discoverable
-class FirebaseBase(EnrichSignals, Block):
+class FirebaseBase(Block):
 
     config = ObjectProperty(FirebaseAuthProperty, title="Authentication")
-    collection = StringProperty(title='Database Collection')
-    userEmail = StringProperty(title='Authenticated User Email')
-    userPassword = StringProperty(title='Authenticated User Password')
+    collection = StringProperty(title='Database Collection',
+                                default='[[FIREBASE_COLLECTION]]')
+    userEmail = StringProperty(title='Authenticated User Email',
+                               default='[[USER_EMAIL]]')
+    userPassword = StringProperty(title='Authenticated User Password',
+                                  default='[[USER_PASSWORD]]')
 
     def __init__(self):
         super().__init__()
