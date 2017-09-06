@@ -136,15 +136,6 @@
           "apiKey": null
         }
       },
-      "enrich": {
-        "title": "Signal Enrichment",
-        "type": "ObjectType",
-        "description": "Options for enriching signals.",
-        "default": {
-          "enrich_field": "",
-          "exclude_existing": true
-        }
-      },
       "userEmail": {
         "title": "Authenticated User Email",
         "type": "StringType",
