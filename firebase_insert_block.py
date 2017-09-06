@@ -1,9 +1,10 @@
 from nio.properties import VersionProperty
+from nio.block.mixins import EnrichSignals
 
 from .firebase_base import FirebaseBase
 
 
-class FirebaseInsert(FirebaseBase):
+class FirebaseInsert(FirebaseBase, EnrichSignals):
 
     version = VersionProperty("2.0.0")
 
@@ -14,6 +15,7 @@ class FirebaseInsert(FirebaseBase):
             # so we need to compute it inside the loop
             collection = self._get_collection(sig)
             try:
+                print(collection)
                 res = self.db.child(collection).push(sig.to_dict(),
                                                      self.user['idToken'])
             except:
