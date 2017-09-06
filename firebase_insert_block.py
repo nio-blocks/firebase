@@ -15,7 +15,6 @@ class FirebaseInsert(FirebaseBase, EnrichSignals):
             # so we need to compute it inside the loop
             collection = self._get_collection(sig)
             try:
-                print(collection)
                 res = self.db.child(collection).push(sig.to_dict(),
                                                      self.user['idToken'])
             except:
