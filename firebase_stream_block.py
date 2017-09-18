@@ -6,7 +6,7 @@ from .firebase_base import FirebaseBase
 
 class FirebaseStream(FirebaseBase):
 
-    version = VersionProperty("1.0.1")
+    version = VersionProperty("1.0.2")
     show_root = BoolProperty(title='Return Root Data?', default=True)
 
     def start(self):
