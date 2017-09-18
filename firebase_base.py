@@ -23,6 +23,7 @@ class FirebaseBase(Block):
         self.stream = None
         self.user = None
         self.db = None
+        self.stream_start = False
 
     def configure(self, context):
         super().configure(context)
