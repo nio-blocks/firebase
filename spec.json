@@ -9,13 +9,13 @@
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
-        "description": "Object key for accessing elements in the database tree",
+        "description": "Object key for accessing elements in the database tree.",
         "default": "[[FIREBASE_COLLECTION]]"
       },
       "config": {
         "title": "Authentication",
         "type": "ObjectType",
-        "description": "Object containing authentication data",
+        "description": "Object containing authentication data.",
         "default": {
           "databaseURL": "[[FIREBASE_DATABASE_URL]]",
           "apiKey": "[[FIREBASE_API_KEY]]",
@@ -40,7 +40,7 @@
       "userPassword": {
         "title": "Authenticated User Password",
         "type": "StringType",
-        "description": "Authenticated user password set up in Firebase",
+        "description": "Authenticated user password set up in Firebase.",
         "default": "[[USER_PASSWORD]]"
       }
     },
@@ -66,13 +66,13 @@
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
-        "description": "Object key for accessing elements in the database tree",
+        "description": "Object key for accessing elements in the database tree.",
         "default": "[[FIREBASE_COLLECTION]]"
       },
       "config": {
         "title": "Authentication",
         "type": "ObjectType",
-        "description": "Object containing authentication data",
+        "description": "Object containing authentication data.",
         "default": {
           "databaseURL": "[[FIREBASE_DATABASE_URL]]",
           "apiKey": "[[FIREBASE_API_KEY]]",
@@ -91,13 +91,13 @@
       "userEmail": {
         "title": "Authenticated User Email",
         "type": "StringType",
-        "description": "Authenticated user email set up in Firebase",
+        "description": "Authenticated user email set up in Firebase.",
         "default": "[[USER_EMAIL]]"
       },
       "userPassword": {
         "title": "Authenticated User Password",
         "type": "StringType",
-        "description": "Authenticated user password set up in Firebase",
+        "description": "Authenticated user password set up in Firebase.",
         "default": "[[USER_PASSWORD]]"
       }
     },
@@ -115,7 +115,7 @@
   },
   "nio/FirebaseStream": {
     "version": "1.0.2",
-    "description": "The Firebase Stream block listens for changes to the specified `collection` and outputs all changes as a signal",
+    "description": "The Firebase Stream block listens for changes to the specified `collection` and outputs all changes as a signal.",
     "categories": [
       "Database"
     ],
@@ -123,13 +123,13 @@
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
-        "description": "Object key for accessing elements in the database tree",
+        "description": "Object key for accessing elements in the database tree.",
         "default": "[[FIREBASE_COLLECTION]]"
       },
       "config": {
         "title": "Authentication",
         "type": "ObjectType",
-        "description": "Object containing authentication data",
+        "description": "Object containing authentication data.",
         "default": {
           "apiKey": "[[FIREBASE_API_KEY]]",
           "databaseURL": "[[FIREBASE_DATABASE_URL]]",
@@ -145,7 +145,7 @@
       "userPassword": {
         "title": "Authenticated User Password",
         "type": "StringType",
-        "description": "Authenticated user password set up in Firebase",
+        "description": "Authenticated user password set up in Firebase.",
         "default": "[[USER_PASSWORD]]"
       }
     },
