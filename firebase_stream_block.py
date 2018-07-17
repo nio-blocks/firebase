@@ -1,10 +1,11 @@
 from nio.properties import VersionProperty, BoolProperty
 from nio.signal.base import Signal
+from nio import GeneratorBlock
 
 from .firebase_base import FirebaseBase
 
 
-class FirebaseStream(FirebaseBase):
+class FirebaseStream(FirebaseBase, GeneratorBlock):
 
     version = VersionProperty("1.0.2")
     show_root = BoolProperty(title='Return Root Data?', default=True)
