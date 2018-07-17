@@ -27,6 +27,7 @@ class FirebaseBase(Block):
         self.stream = None
         self.user = None
         self.db = None
+        self.auth = None
         self.stream_start = False
         self._refresh_job = None
 
@@ -53,12 +54,12 @@ class FirebaseBase(Block):
         super().stop()
 
     def _refresh_auth(self):
-        self.user = auth.refresh(self.user['refreshToken'])
+        self.user = self.auth.refresh(self.user['refreshToken'])
 
     def _create_firebase(self):
         firebase = pyrebase.initialize_app(self.config().get_auth_object())
-        auth = firebase.auth()
-        self.user = auth.sign_in_with_email_and_password(self.userEmail(),
+        self.auth = firebase.auth()
+        self.user = self.auth.sign_in_with_email_and_password(self.userEmail(),
                                                          self.userPassword())
         self.db = firebase.database()
 
