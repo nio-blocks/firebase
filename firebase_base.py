@@ -1,7 +1,7 @@
 import pyrebase
 from datetime import timedelta
 
-from nio import Block
+from nio.block.base import Base
 from nio.properties import ObjectProperty, StringProperty, IntProperty
 from nio.util.discovery import not_discoverable
 from nio.modules.scheduler.job import Job
@@ -10,7 +10,7 @@ from .auth.property import FirebaseAuthProperty
 
 
 @not_discoverable
-class FirebaseBase(Block):
+class FirebaseBase(Base):
 
     config = ObjectProperty(FirebaseAuthProperty, title="Authentication", order=0)
     collection = StringProperty(title='Database Collection',
@@ -19,16 +19,14 @@ class FirebaseBase(Block):
                                default='[[USER_EMAIL]]', order=1)
     userPassword = StringProperty(title='Authenticated User Password',
                                   default='[[USER_PASSWORD]]', order=2)
-    authRefresh = IntProperty(title='Auth Refresh Interval', default=3600,
+    authRefresh = IntProperty(title='Auth Refresh Interval', default=1800,
                               advanced=True, order=4)
 
     def __init__(self):
         super().__init__()
-        self.stream = None
         self.user = None
         self.db = None
         self.auth = None
-        self.stream_start = False
         self._refresh_job = None
 
     def configure(self, context):
@@ -54,6 +52,7 @@ class FirebaseBase(Block):
         super().stop()
 
     def _refresh_auth(self):
+        self.logger.info("Refeshing user token")
         self.user = self.auth.refresh(self.user['refreshToken'])
 
     def _create_firebase(self):

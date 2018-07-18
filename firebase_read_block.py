@@ -1,10 +1,11 @@
 from nio.properties import VersionProperty
 from nio.block.mixins import EnrichSignals
+from nio.block.base import Block
 
 from .firebase_base import FirebaseBase
 
 
-class FirebaseRead(FirebaseBase, EnrichSignals):
+class FirebaseRead(FirebaseBase, Block, EnrichSignals):
 
     version = VersionProperty("2.0.1")
 
