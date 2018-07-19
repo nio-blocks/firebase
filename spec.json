@@ -57,7 +57,7 @@
     "commands": {}
   },
   "nio/FirebaseRead": {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "The FirebaseRead block takes incoming signals and uses them to read from the Firebase database under the specified `collection`.",
     "categories": [
       "Database"
