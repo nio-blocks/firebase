@@ -1,6 +1,6 @@
 {
   "nio/FirebaseInsert": {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "The FirebaseInsert block takes incoming signals and saves them to the Firebase database under the specified `collection`. If no `collection` is specified, each signal will be saved in the database under a uniquely generated key.",
     "categories": [
       "Database"
