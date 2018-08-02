@@ -1,1 +1,1 @@
-pyrebase
+pyrebase~=3.0
