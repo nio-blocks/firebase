@@ -4,6 +4,7 @@ The FirebaseInsert block takes incoming signals and saves them to the Firebase d
 
 Properties
 ----------
+- **authRefresh**: Interval (in seconds) at which to refresh authentication.
 - **collection**: Object key for accessing elements in the database tree.
 - **config**: Object containing authentication data.
 - **enrich**: If checked (true), the attributes of the incoming signal will be excluded from the outgoing signal. If unchecked (false), the attributes of the incoming signal will be included in the outgoing signal.
@@ -34,6 +35,7 @@ The FirebaseRead block takes incoming signals and uses them to read from the Fir
 
 Properties
 ----------
+- **authRefresh**: Interval (in seconds) at which to refresh authentication.
 - **collection**: Object key for accessing elements in the database tree
 - **config**: Object containing authentication data
 - **enrich**: If checked (true), the attributes of the incoming signal will be excluded from the outgoing signal. If unchecked (false), the attributes of the incoming signal will be included in the outgoing signal.
@@ -64,14 +66,16 @@ The FirebaseStream block listens for changes to the specified `collection` and o
 
 Properties
 ----------
+- **authRefresh**: Interval (in seconds) at which to refresh authentication.
 - **collection**: Object key for accessing elements in the database tree.
 - **config**: Object containing authentication data.
+- **show_root**: When starting, process root level data for a collection.
 - **userEmail**: Authenticated user email set up in Firebase.
 - **userPassword**: Authenticated user password set up in Firebase.
 
 Inputs
 ------
-- **default**: None.
+None
 
 Outputs
 -------
