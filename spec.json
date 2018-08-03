@@ -126,7 +126,7 @@
     "commands": {}
   },
   "nio/FirebaseStream": {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "The FirebaseStream block listens for changes to the specified `collection` and outputs all changes as a signal",
     "categories": [
       "Database"
