@@ -6,6 +6,12 @@
       "Database"
     ],
     "properties": {
+      "authRefresh": {
+        "title": "Auth Refresh Interval",
+        "type": "IntType",
+        "description": "Interval (in seconds) at which to refresh authentication.",
+        "default": 1800
+      },
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
@@ -17,8 +23,8 @@
         "type": "ObjectType",
         "description": "Object containing authentication data.",
         "default": {
-          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
           "apiKey": "[[FIREBASE_API_KEY]]",
+          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
           "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
@@ -27,8 +33,8 @@
         "type": "ObjectType",
         "description": "If checked (true), the attributes of the incoming signal will be excluded from the outgoing signal. If unchecked (false), the attributes of the incoming signal will be included in the outgoing signal.",
         "default": {
-          "exclude_existing": true,
-          "enrich_field": ""
+          "enrich_field": "",
+          "exclude_existing": true
         }
       },
       "userEmail": {
@@ -63,6 +69,12 @@
       "Database"
     ],
     "properties": {
+      "authRefresh": {
+        "title": "Auth Refresh Interval",
+        "type": "IntType",
+        "description": "Interval (in seconds) at which to refresh authentication.",
+        "default": 1800
+      },
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
@@ -74,8 +86,8 @@
         "type": "ObjectType",
         "description": "Object containing authentication data",
         "default": {
-          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
           "apiKey": "[[FIREBASE_API_KEY]]",
+          "databaseURL": "[[FIREBASE_DATABASE_URL]]",
           "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
@@ -84,8 +96,8 @@
         "type": "ObjectType",
         "description": "If checked (true), the attributes of the incoming signal will be excluded from the outgoing signal. If unchecked (false), the attributes of the incoming signal will be included in the outgoing signal.",
         "default": {
-          "exclude_existing": true,
-          "enrich_field": ""
+          "enrich_field": "",
+          "exclude_existing": true
         }
       },
       "userEmail": {
@@ -120,6 +132,12 @@
       "Database"
     ],
     "properties": {
+      "authRefresh": {
+        "title": "Auth Refresh Interval",
+        "type": "IntType",
+        "description": "Interval (in seconds) at which to refresh authentication.",
+        "default": 1800
+      },
       "collection": {
         "title": "Database Collection",
         "type": "StringType",
@@ -136,6 +154,12 @@
           "projectId": "[[FIREBASE_PROJECT_ID]]"
         }
       },
+      "show_root": {
+        "title": "Return Root Data?",
+        "type": "BoolType",
+        "description": "When starting, process root level data for a collection.",
+        "default": true
+      },
       "userEmail": {
         "title": "Authenticated User Email",
         "type": "StringType",
@@ -149,11 +173,7 @@
         "default": "[[USER_PASSWORD]]"
       }
     },
-    "inputs": {
-      "default": {
-        "description": "None."
-      }
-    },
+    "inputs": {},
     "outputs": {
       "default": {
         "description": "Database changes output as a signal."
