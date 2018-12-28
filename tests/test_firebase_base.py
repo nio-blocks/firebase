@@ -35,7 +35,7 @@ class TestFirebaseBase(NIOBlockTestCase):
 
         with patch(FirebaseBase.__module__ + '.pyrebase') as mock_fbase:
             blk._create_firebase = Mock()
-            blk._refresh_auth = Mock()
+            blk.refresh_auth = Mock()
 
             self.configure_block(blk, {
                 "authRefresh": 1
@@ -44,7 +44,7 @@ class TestFirebaseBase(NIOBlockTestCase):
 
             blk.start()
             sleep(1.5)
-            blk._refresh_auth.assert_called_once_with()
+            blk.refresh_auth.assert_called_once_with()
             blk.stop()
 
     def get_absolute_import(self, import_loc):

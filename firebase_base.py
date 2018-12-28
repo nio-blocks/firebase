@@ -2,6 +2,7 @@ import pyrebase
 from datetime import timedelta
 
 from nio.block.base import Base
+from nio.command import command
 from nio.properties import ObjectProperty, StringProperty, IntProperty
 from nio.util.discovery import not_discoverable
 from nio.modules.scheduler.job import Job
@@ -10,6 +11,7 @@ from .auth.property import FirebaseAuthProperty
 
 
 @not_discoverable
+@command('refresh_auth')
 class FirebaseBase(Base):
 
     config = ObjectProperty(FirebaseAuthProperty, title="Authentication", order=0)
@@ -39,7 +41,7 @@ class FirebaseBase(Base):
         Begin the job to refresh the auth token every hour
         """
         super().start()
-        self._refresh_job = Job(self._refresh_auth,
+        self._refresh_job = Job(self.refresh_auth,
                                 timedelta(seconds=self.authRefresh()),
                                 True)
 
@@ -51,9 +53,10 @@ class FirebaseBase(Base):
         self._refresh_job.cancel()
         super().stop()
 
-    def _refresh_auth(self):
+    def refresh_auth(self):
         self.logger.info("Refeshing user token")
         self.user = self.auth.refresh(self.user['refreshToken'])
+        return {'user': self.user}
 
     def _create_firebase(self):
         firebase = pyrebase.initialize_app(self.config().get_auth_object())

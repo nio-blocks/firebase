@@ -20,16 +20,17 @@ class FirebaseStream(FirebaseBase, GeneratorBlock):
         self._connect_stream()
 
     def stop(self):
-        self.stream.close()
+        self._close_stream()
         super().stop()
 
-    def _refresh_auth(self):
+    def refresh_auth(self):
         self.logger.info("Closing database stream for auth refresh")
-        self.stream.close()
+        self._close_stream()
 
-        super()._refresh_auth()
+        result = super().refresh_auth()
         # Reopen the stream using the refreshed user credentials
         self._connect_stream()
+        return result
 
     def _connect_stream(self):
         self.logger.info("Connecting to stream")
@@ -37,6 +38,16 @@ class FirebaseStream(FirebaseBase, GeneratorBlock):
         self.stream = self.db.child(self.collection()).\
             stream(self.stream_handler, self.user['idToken'])
         self.logger.info("New database stream opened")
+
+    def _close_stream(self):
+        self.logger.info("Closing stream")
+        try:
+            self.stream.close()
+        except:
+            # ignore stream close failures, they sometimes occur with pyrebase
+            self.logger.info(
+                "Ignoring exception while closing stream", exc_info=True)
+            pass
 
     def stream_handler(self, message):
         if not self.show_root() and self.stream_start:
